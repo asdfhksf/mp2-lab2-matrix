@@ -36,9 +36,9 @@ TEST(TMatrix, copied_matrix_is_equal_to_source_one)
 TEST(TMatrix, copied_matrix_has_its_own_memory)
 {
 	TMatrix<int> m(3);
-	m[0][0] = 1; m[1][1] = 2, m[2][2] = 3;
+	m[0][2] = 1; m[1][1] = 2, m[2][0] = 3;
 	TMatrix<int> m1(m);
-	m1[0][0] = 2; m1[1][1] = 3, m1[2][2] = 4;
+	m1[0][2] = 2; m1[1][1] = 3, m1[2][0] = 4;
 
 	EXPECT_EQ(false, m == m1);
 }
@@ -60,17 +60,25 @@ TEST(TMatrix, can_set_and_get_element)
 
 TEST(TMatrix, throws_when_set_element_with_negative_index)
 {
-	ADD_FAILURE();
+	TMatrix<int> m(3);
+
+	ASSERT_ANY_THROW(m[0][-1] = 0);
 }
 
 TEST(TMatrix, throws_when_set_element_with_too_large_index)
 {
-	ADD_FAILURE();
+	TMatrix<int> m(3);
+
+	ASSERT_ANY_THROW(m[0][5] = 0);
 }
 
 TEST(TMatrix, can_assign_matrix_to_itself)
 {
-	ADD_FAILURE();
+	TMatrix<int> m(3);
+	m[0][2] = 1; m[1][1] = 2, m[2][0] = 3;
+	m = m;
+
+	EXPECT_EQ(m, m);
 }
 
 TEST(TMatrix, can_assign_matrices_of_equal_size)

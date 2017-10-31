@@ -94,7 +94,7 @@ TVector<ValType>::~TVector()
 template <class ValType> // доступ
 ValType& TVector<ValType>::operator[](int pos)
 {
-	if (pos > MAX_VECTOR_SIZE)
+	if ((pos > MAX_VECTOR_SIZE) || (pos > Size))
 		throw "large index";
 	if (pos < 0)
 		throw "negative length";
@@ -261,8 +261,8 @@ TMatrix<ValType>::TMatrix(const TMatrix<ValType> &mt) : TVector<TVector<ValType>
 	//for (int i = 0; i < mt.Size; i++)
 	//	pVector[i] = new ValType[mt.Size - i];
 
-	for (int i = 0; i < mt.Size; i++)
-		pVector[i] = mt.pVector[i];
+	//for (int i = 0; i < mt.Size; i++)
+	//	pVector[i] = mt.pVector[i];
 }
 
 template <class ValType> // конструктор преобразования типа
@@ -292,13 +292,7 @@ TMatrix<ValType>& TMatrix<ValType>::operator=(const TMatrix<ValType> &mt)
 {
 	if (this != &mt)
 	{
-		//for (int i = 0; i < mt.Size; i++)
-		//	delete[] pVector[i];
-		//delete[] pVector;
-
-		//TVector<TVector<ValType> >(mt.Size);
-		//for (int i = 0; i < mt.Size; i++)
-		//	pVector[i] = TVector<ValType>(mt.Size - i, 0);
+		Size = mt.Size;
 
 		for (int i = 0; i < mt.Size; i++)
 			pVector[i] = mt.pVector[i];
