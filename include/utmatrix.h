@@ -257,12 +257,6 @@ TMatrix<ValType>::TMatrix(int s) : TVector<TVector<ValType> >(s)
 template <class ValType> // конструктор копирования
 TMatrix<ValType>::TMatrix(const TMatrix<ValType> &mt) : TVector<TVector<ValType> >(mt)
 {
-	//pVector = new TVector<ValType> [mt.Size];
-	//for (int i = 0; i < mt.Size; i++)
-	//	pVector[i] = new ValType[mt.Size - i];
-
-	//for (int i = 0; i < mt.Size; i++)
-	//	pVector[i] = mt.pVector[i];
 }
 
 template <class ValType> // конструктор преобразования типа
@@ -274,12 +268,6 @@ template <class ValType> // сравнение
 bool TMatrix<ValType>::operator==(const TMatrix<ValType> &mt) const
 {
 	return TVector<TVector<ValType> >::operator==(mt);
-	//int ii = 0;
-
-	//for (int i = 0; i < mt.Size; i++)
-	//	if (pVector[i] == mt.pVector[i]) ii++;
-	//if (ii == Size) return true;
-	//else return false;
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // сравнение
@@ -292,13 +280,6 @@ template <class ValType> // присваивание
 TMatrix<ValType>& TMatrix<ValType>::operator=(const TMatrix<ValType> &mt)
 {
 	TVector<TVector<ValType> >::operator=(mt);
-	//if (this != &mt)
-	//{
-	//	Size = mt.Size;
-
-	//	for (int i = 0; i < mt.Size; i++)
-	//		pVector[i] = mt.pVector[i];
-	//}
 	return *this;
 } /*-------------------------------------------------------------------------*/
 
@@ -306,30 +287,12 @@ template <class ValType> // сложение
 TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix<ValType> &mt)
 {
 	return TVector<TVector<ValType> >::operator+(mt);
-	//if (mt.Size != Size)
-	//	throw "different size";
-
-	//TMatrix tmp(Size);
-
-	//for (int i = 0; i < Size; i++)
-	//	tmp.pVector[i] = pVector[i] + mt.pVector[i];
-
-	//return tmp;
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // вычитание
 TMatrix<ValType> TMatrix<ValType>::operator-(const TMatrix<ValType> &mt)
 {
 	return TVector<TVector<ValType> >::operator-(mt);
-	//if (mt.Size != Size)
-	//	throw "different size";
-
-	//TMatrix tmp(Size);
-
-	//for (int i = 0; i < Size; i++)
-	//	tmp.pVector[i] = pVector[i] - mt.pVector[i];
-
-//	return tmp;
 
 } /*-------------------------------------------------------------------------*/
 

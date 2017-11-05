@@ -151,25 +151,21 @@ TEST(TMatrix, matrices_with_different_size_are_not_equal)
 
 TEST(TMatrix, can_add_matrices_with_equal_size)
 {
-	TMatrix<int> m(4), m1(4), m2(4);
+	TMatrix<int> m(3), m1(3), m2(3);
 
-	for (int i = 0; i < 4; i++)
-		for (int j = i; j < 4; j++)
+	for (int i = 0; i < 3; i++)
+		for (int j = i; j < 3; j++)
 		{
 			m[i][j] = m1[i][j] = m2[i][j] = 0;
 		}
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		m[i][i] = 2;
 		m1[i][i] = 1;
 		m2[i][i] = 3;
 	}
-	cout << m << endl;
-	cout << m1 << endl;
-	cout << m2 << endl;
 	m1 = m1 + m;
-	cout << m1 << endl;
 
 	EXPECT_EQ(m2, m1);
 }
